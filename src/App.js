@@ -60,7 +60,8 @@ const App = () => {
     phonebookService
       .remove(id)
       .then((response) => {
-        if (response.status === 200) {
+        console.log(response);
+        if (response.status === 204) {
           const updatedPersons = persons.filter((person) => person.id !== id);
           setPersons(updatedPersons);
           showNotification("success", `Successfully deleted ${person.name}`);
