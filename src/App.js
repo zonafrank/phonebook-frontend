@@ -10,7 +10,7 @@ const App = () => {
   const [filterVal, setFilterVal] = useState("");
   const [message, setMessage] = useState(null);
 
-  const notificationTimer = 3000;
+  const notificationTimer = 4000;
 
   const showNotification = (type, text) => {
     setMessage({ type, text });
@@ -39,7 +39,7 @@ const App = () => {
             showNotification("success", `Updated ${foundPerson.name}`);
           })
           .catch((error) => {
-            showNotification("error", error.message);
+            showNotification("error", error.response.data.error);
           });
       }
     } else {
@@ -50,7 +50,7 @@ const App = () => {
           showNotification("success", `Added ${data.name}`);
         })
         .catch((error) => {
-          showNotification("error", error.message);
+          showNotification("error", error.response.data.error);
         });
     }
   };
